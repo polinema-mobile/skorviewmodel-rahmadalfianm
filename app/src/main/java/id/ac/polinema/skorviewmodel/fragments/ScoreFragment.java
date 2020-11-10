@@ -1,6 +1,7 @@
 package id.ac.polinema.skorviewmodel.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,9 +9,11 @@ import android.view.ViewGroup;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import id.ac.polinema.skorviewmodel.R;
 import id.ac.polinema.skorviewmodel.databinding.FragmentScoreBinding;
+import id.ac.polinema.skorviewmodel.models.GoalScorer;
 import id.ac.polinema.skorviewmodel.viewmodels.ScoreViewModel;
 
 /**
@@ -38,7 +41,11 @@ public class ScoreFragment extends Fragment {
 							 Bundle savedInstanceState) {
 		FragmentScoreBinding binding = DataBindingUtil
 			.inflate(inflater, R.layout.fragment_score, container, false);
+		binding.setFragment(this);
+		binding.setLifecycleOwner(this);
 		// instance viewmodel here
+		viewModel = new ViewModelProvider(requireActivity()).get(ScoreViewModel.class);
+		binding.setVm(viewModel);
 		return binding.getRoot();
 	}
 

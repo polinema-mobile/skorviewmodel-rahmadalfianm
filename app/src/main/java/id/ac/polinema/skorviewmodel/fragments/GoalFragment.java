@@ -42,14 +42,15 @@ public class GoalFragment extends Fragment {
 		binding.setFragment(this);
 		binding.setGoalScorer(goalScorer);
 		requestKey = GoalFragmentArgs.fromBundle(getArguments()).getRequestKey();
+		viewModel = new ViewModelProvider(requireActivity()).get(ScoreViewModel.class);
 		return binding.getRoot();
 	}
 
 	public void onSaveClicked(View view) {
 		Bundle bundle = new Bundle();
 		bundle.putParcelable(ScoreFragment.SCORER_KEY, goalScorer);
-
 		// set goalscorer use viewmodel
+		viewModel.setGoalScorer(requestKey, goalScorer);
 		Navigation.findNavController(view).navigateUp();
 	}
 
