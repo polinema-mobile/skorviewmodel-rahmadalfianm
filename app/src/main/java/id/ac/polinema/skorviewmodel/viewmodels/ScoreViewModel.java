@@ -42,6 +42,27 @@ public class ScoreViewModel extends ViewModel {
         Navigation.findNavController(view).navigate(action);
     }
 
+    public String getHomeScorer(){
+        StringBuilder result = new StringBuilder();
+        for (GoalScorer g : homeGoalScorerList.getValue()){
+            result.append(g.getName())
+                    .append(" ")
+                    .append(g.getMinute())
+                    .append("\" ");
+        }
+        return  result.toString();
+    }
+
+    public String getAwayScorer() {
+        StringBuilder result = new StringBuilder();
+        for (GoalScorer g : awayGoalScorerList.getValue()) {
+            result.append(g.getName())
+                    .append(" ")
+                    .append(g.getMinute())
+                    .append("\" ");
+        }
+        return result.toString();
+    }
 }
 
 

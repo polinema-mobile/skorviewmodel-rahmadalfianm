@@ -49,5 +49,4 @@ public class ScoreFragment extends Fragment {
 		return binding.getRoot();
 	}
 
-
 }
